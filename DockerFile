@@ -7,12 +7,12 @@ COPY environment.yml .
 RUN conda env create -f environment.yml
 
 # Make RUN commands use the new environment:
-SHELL ["conda", "run", "-n", "myenv", "/bin/bash", "-c"]
+SHELL ["conda", "run", "-n", "googlyeyes", "/bin/bash", "-c"]
 
 # Make sure the environment is activated:
 RUN echo "Make sure flask is installed:"
 RUN python -c "import flask"
 
 # The code to run when container is started:
-COPY run.py .
-ENTRYPOINT ["conda", "run", "-n", "googly-eyes", "python", "server.py"]
+COPY server.py .
+ENTRYPOINT ["conda", "run", "-n", "googlyeyes", "python", "server.py"]
