@@ -56,7 +56,11 @@ facial_landmark_coords = {
     "left_eye": (42, 48),
 }
 
+x_offset = y_offset = 250
 googlyeye = rotate_eye(angle=random.randint(0, 360))
+# googlyeye_array = np.asarray(googlyeye)
+
+googlyeye = cv2.imread("resources/eye.png")
 
 # loop over the face detections
 for (i, rect) in enumerate(rects):
@@ -90,12 +94,11 @@ for (i, rect) in enumerate(rects):
         roi = image[y:y+h, x:x+w]
         roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
 
+        # googlyeye = clone[y_offset:y_offset+googlyeye.shape[0],
+        #                   x_offset:x_offset+googlyeye.shape[1]]
+        # cv2.imshow("Image", googlyeye)
+
         # show the particular face part
         cv2.imshow("ROI", roi)
         cv2.imshow("Image", clone)
         cv2.waitKey(0)
-
-    # visualize all facial landmarks with a transparent overlay
-    output = face_utils.visualize_facial_landmarks(image, shape)
-    cv2.imshow("Image", output)
-    cv2.waitKey(0)

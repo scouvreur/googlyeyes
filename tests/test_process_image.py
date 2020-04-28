@@ -1,8 +1,13 @@
 from pathlib import Path
 from PIL import Image, ImageChops
 
-# from googlyeyes import process_image, rotate
 from googlyeyes.rotate import rotate_eye
+
+
+def is_equal(im1, im2):
+    # Helper function to determine if two images are equal
+    # pixel by pixel
+    return ImageChops.difference(im1, im2).getbbox() is None
 
 
 def test_visualize_facial_landmarks():
@@ -16,9 +21,4 @@ def test_rotate_eye():
     file_path = (base_path / "eye_rotated_90deg.png").resolve()
     ground_truth = Image.open(file_path)
     rotated_eye = rotate_eye(angle=90)
-
-    def is_equal(im1, im2):
-        # Determine if two images are equal pixel by pixel
-        return ImageChops.difference(im1, im2).getbbox() is None
-
     assert is_equal(ground_truth, rotated_eye)

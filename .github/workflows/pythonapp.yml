@@ -23,9 +23,12 @@ jobs:
         update-conda: true
         python-version: 3.6
         conda-channels: anaconda, conda-forge defaults menpo
+    - name: Check Python version
+      run: which python
+    - name: Check Conda version
+      run: conda --version
     - name: Install dependencies
       run: |
-        conda --version
         conda env create -f environment.yml
         conda activate googlyeyes
     - name: Lint with flake8
@@ -39,4 +42,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install -e .
-        pytest
+        pytest -vvv

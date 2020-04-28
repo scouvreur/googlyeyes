@@ -10,7 +10,7 @@ to an image sent to its POST endpoint.
 
 setuptools.setup(
     name="googlyeyes",
-    version="0.0.1",
+    version="0.1",
     author="Stephane Couvreur",
     author_email="stephane.couvreur.sueron@gmail.com",
     description=short_description,

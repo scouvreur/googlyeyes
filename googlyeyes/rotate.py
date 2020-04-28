@@ -5,13 +5,11 @@ from pathlib import Path
 def rotate_eye(angle):
     """
     Returns rotated googly eye.
-
     Parameters
     ----------
     angle : int
         Angle to rotate from reference.
         Can be between 0 and 360 degrees.
-
     Returns
     -------
     rotated_eye : PIL image object
@@ -22,3 +20,6 @@ def rotate_eye(angle):
     eye = Image.open(file_path)
     rotated_eye = eye.rotate(angle)
     return rotated_eye
+
+
+# rotate_eye(angle=90).save("eye_rotated_90deg.png")
