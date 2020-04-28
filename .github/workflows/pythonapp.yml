@@ -8,8 +8,10 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
 
@@ -18,11 +20,11 @@ jobs:
     - name: Set up Python 3.6
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
+        update-conda: true
+        python-version: 3.6
+        conda-channels: anaconda, conda-forge defaults menpo
     - name: Install dependencies
       run: |
-        conda install conda conda-build
-        conda update conda && conda update conda-build
         conda --version
         conda env create -f environment.yml
         conda activate googlyeyes
@@ -36,4 +38,5 @@ jobs:
     #   run: black . --line-length 79 --check
     - name: Test with pytest
       run: |
+        pip install -e .
         pytest
