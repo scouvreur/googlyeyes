@@ -1,8 +1,9 @@
-name: googly-eyes
+name: googlyeyes
 channels:
   - conda-forge
   - anaconda
   - defaults
+  - menpo
 dependencies:
   - attrs=19.3.0=py_0
   - blas=1.0=mkl
@@ -96,5 +97,4 @@ dependencies:
     - aniso8601==8.0.0
     - flask-restful==0.3.8
     - pytz==2019.3
-prefix: /Users/stephane.couvreur/anaconda3/envs/googly-eyes
 
