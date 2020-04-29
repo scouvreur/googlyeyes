@@ -49,34 +49,34 @@ image = imutils.resize(image, width=500)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # detect faces in the grayscale image
-rects = detector(gray, 1)
+faces = detector(gray, 1)
 
 facial_landmark_coords = {
     "right_eye": (36, 42),
     "left_eye": (42, 48),
 }
 
-x_offset = y_offset = 250
 googlyeye = rotate_eye(angle=random.randint(0, 360))
 # googlyeye_array = np.asarray(googlyeye)
 
-googlyeye = cv2.imread("resources/eye.png")
+googlyeye = cv2.imread("resources/eye2.png", -1)
+googlyeye = cv2.resize(googlyeye, (50, 50))
 
-# loop over the face detections
-for (i, rect) in enumerate(rects):
+# loop over all faces detected in image
+for (i, face) in enumerate(faces):
     # determine the facial landmarks for the face region, then
     # convert the landmark (x, y)-coordinates to a NumPy array
-    shape = predictor(gray, rect)
+    shape = predictor(gray, face)
     shape = face_utils.shape_to_np(shape)
 
     # loop over the face parts individually
-    for (name, (i, j)) in facial_landmark_coords.items():
+    for (landmark, (i, j)) in facial_landmark_coords.items():
         # clone the original image so we can draw on it, then
-        # display the name of the face part on the image
+        # display the landmark of the face part on the image
         clone = image.copy()
         cv2.putText(
             clone,
-            name,
+            landmark,
             (10, 30),
             cv2.FONT_HERSHEY_SIMPLEX,
             0.7,
@@ -94,9 +94,27 @@ for (i, rect) in enumerate(rects):
         roi = image[y:y+h, x:x+w]
         roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
 
-        # googlyeye = clone[y_offset:y_offset+googlyeye.shape[0],
-        #                   x_offset:x_offset+googlyeye.shape[1]]
-        # cv2.imshow("Image", googlyeye)
+        s_img = googlyeye
+
+        facial_landmark_coords[landmark]
+        if landmark == "right_eye":
+            index = 37
+        elif landmark == "left_eye":
+            index = 43
+        else:
+            pass
+
+        x_offset, y_offset = tuple(shape[index])
+
+        y1, y2 = y_offset, y_offset + s_img.shape[0]
+        x1, x2 = x_offset, x_offset + s_img.shape[1]
+
+        alpha_s = s_img[:, :, 3] / 255.0
+        alpha_l = 1.0 - alpha_s
+
+        for c in range(0, 3):
+            clone[y1:y2, x1:x2, c] = (alpha_s * s_img[:, :, c] +
+                                      alpha_l * clone[y1:y2, x1:x2, c])
 
         # show the particular face part
         cv2.imshow("ROI", roi)
