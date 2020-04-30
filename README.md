@@ -9,16 +9,16 @@ Install in editable mode using pip:
 ```bash
 cd googlyeyes/
 conda create -n googlyeyes-env -c conda-forge python=3.6 coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
-
 conda activate googlyeyes-env
 pip install -e .
 ```
 
 ## Run unit and regression tests
 
-From the project root directory you can run the tests with:
+From the project root directory you can run the tests by first running the application in the background, and then using `pytest`:
 
 ```bash
+screen -d -m -S server bash -c "python googlyeyes/server.py"
 pytest
 ```
 
