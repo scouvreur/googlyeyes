@@ -1,14 +1,19 @@
+"""
+Test for web application REST API server module.
+"""
+
 import requests
 import cv2
 import os
+
+from tests.helpers import is_valid_uuid
 
 # TO-DO read this from server.py
 host = "http://127.0.0.1:5000"
 
 
 def POST_image(path, url):
-    """
-    Helper function to post an image
+    """Helper function to post an image
     """
     headers = {"content-type": "image/jpeg"}
     img = cv2.imread(path)
@@ -20,7 +25,8 @@ def POST_image(path, url):
 
 
 def test_GET_imageUpload_endpoint():
-    # Test for POST to /imageUpload endpoint
+    """Test for POST to /imageUpload endpoint
+    """
     url = host + "/imageUpload"
     response = requests.get(url)
     assert response.status_code == 200
@@ -28,22 +34,26 @@ def test_GET_imageUpload_endpoint():
 
 
 def test_POST_imageUpload_endpoint():
-    # Test for POST to /imageUpload endpoint
+    """Test for POST to /imageUpload endpoint
+    """
     url = host + "/imageUpload"
     response = POST_image(path="tests/test_payload_nface_1.jpeg", url=url)
     assert response.status_code == 200
     assert response.json()["status"] == "success"
     assert response.json()["message"] == "Image received. Size=768x1024"
+    assert is_valid_uuid(response.json()["uuid"])
 
 
 def test_no_files_in_queue():
-    # Test that after POST to /imageUpload endpoint, sent
-    # file is deleted from the queue folder
+    """Test that after POST to /imageUpload endpoint, both input and output
+    files are deleted from the queue folder
+    """
     assert os.listdir("queue/") == []
 
 
 def test_POST_test_endpoint():
-    # Test for POST to /test endpoint
+    """Test for POST to /test endpoint
+    """
     headers = {"content-type": "application/json"}
     payload = {"FirstName": "Stephane", "LastName": "Couvreur"}
     url = host + "/test"

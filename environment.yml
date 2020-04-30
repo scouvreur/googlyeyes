@@ -1,13 +1,10 @@
-name: googlyeyes
+name: googlyeyes-env
 channels:
-  - anaconda
   - conda-forge
   - defaults
-  - menpo
 dependencies:
   - asn1crypto=1.3.0=py36_0
   - attrs=19.3.0=py_0
-  - beautifulsoup4=4.9.0=py36_0
   - blas=1.0=mkl
   - bzip2=1.0.8=h1de35cc_0
   - ca-certificates=2020.1.1=0
@@ -15,37 +12,32 @@ dependencies:
   - certifi=2020.4.5.1=py36_0
   - cffi=1.14.0=py36hb5b8e2f_0
   - chardet=3.0.4=py36_1003
-  - click=7.1.1=pyh8c360ce_0
-  - conda=4.8.3=py36_0
-  - conda-build=3.18.11=py36_0
-  - conda-package-handling=1.6.0=py36h1de35cc_0
+  - click=7.1.1=py_0
+  - coverage=5.0=py36h1de35cc_0
   - cryptography=2.8=py36ha12b0ac_0
   - cycler=0.10.0=py_2
   - dlib=19.19=py36h5a1e4dc_1
   - entrypoints=0.3=py36_0
   - ffmpeg=4.0=h01ea3c9_0
-  - filelock=3.0.12=py_0
   - flake8=3.7.9=py36_0
-  - flask=1.1.2=pyh9f0ad1d_0
+  - flask=1.1.2=py_0
   - fontconfig=2.13.0=h5d5b041_1
   - freetype=2.9.1=hb4e5f40_0
   - gettext=0.19.8.1=h15daf44_3
   - glib=2.63.1=hd977a24_0
-  - glob2=0.7=py_0
   - graphite2=1.3.13=h2098e52_0
   - harfbuzz=1.8.8=hb8d4a28_0
   - hdf5=1.10.2=hfa1e0ec_1
-  - icu=58.2=h4b95b61_1
+  - icu=58.2=h0a44026_3
   - idna=2.9=py_1
   - importlib_metadata=1.5.0=py36_0
   - imutils=0.5.3=py36_1
   - intel-openmp=2019.4=233
-  - itsdangerous=1.1.0=py_0
+  - itsdangerous=1.1.0=py36_0
   - jasper=2.0.14=h636a363_1
-  - jinja2=2.11.2=pyh9f0ad1d_0
+  - jinja2=2.11.2=py_0
   - jpeg=9c=h1de35cc_1001
-  - kiwisolver=1.1.0=py36h0a44026_0
-  - libarchive=3.3.3=h786848e_5
+  - kiwisolver=1.2.0=py36h863e41a_0
   - libblas=3.8.0=14_mkl
   - libcblas=3.8.0=14_mkl
   - libcxx=10.0.0=h1af66ff_2
@@ -55,42 +47,33 @@ dependencies:
   - libgfortran=3.0.1=h93005f0_2
   - libiconv=1.16=h1de35cc_0
   - liblapack=3.8.0=14_mkl
-  - liblief=0.9.0=h2a1bed3_2
   - libopencv=3.4.2=h7c891bd_1
   - libopus=1.3.1=h1de35cc_0
   - libpng=1.6.37=ha441bb4_0
   - libtiff=4.1.0=hcb84e12_0
   - libvpx=1.7.0=h378b8a2_0
   - libxml2=2.9.9=hf6e021a_1
-  - lz4-c=1.8.1.2=h1de35cc_0
-  - lzo=2.10=h1de35cc_2
-  - markupsafe=1.1.1=py36h37b9a7d_1
-  - matplotlib-base=3.0.3=py36habd5b94_1
+  - markupsafe=1.1.1=py36h1de35cc_0
+  - matplotlib-base=3.2.1=py36h83d3ec1_0
   - mccabe=0.6.1=py36_1
   - mkl=2019.4=233
   - mkl-service=2.3.0=py36hfbe908c_0
   - mkl_fft=1.0.15=py36h5e564d8_0
   - mkl_random=1.1.0=py36ha771720_0
   - more-itertools=8.2.0=py_0
-  - ncurses=6.2=h0a44026_0
+  - ncurses=6.2=h0a44026_1
   - numpy=1.18.1=py36h7241aed_0
   - numpy-base=1.18.1=py36h6575580_1
-  - olefile=0.46=py36_0
   - opencv=3.4.2=py36h6fd60c2_1
   - openssl=1.1.1g=h1de35cc_0
   - packaging=20.3=py_0
   - pcre=8.43=h0a44026_0
-  - pillow=7.0.0=py36h4655f20_0
   - pip=20.0.2=py36_1
   - pixman=0.38.0=h1de35cc_0
-  - pkginfo=1.5.0.1=py36_0
   - pluggy=0.13.1=py36_0
-  - psutil=5.7.0=py36h1de35cc_0
   - py=1.8.1=py_0
-  - py-lief=0.9.0=py36h1413db1_2
   - py-opencv=3.4.2=py36h7c891bd_1
   - pycodestyle=2.5.0=py36_0
-  - pycosat=0.6.3=py36h1de35cc_0
   - pycparser=2.20=py_0
   - pyflakes=2.1.1=py36_0
   - pyopenssl=19.1.0=py36_0
@@ -99,32 +82,24 @@ dependencies:
   - pytest=5.4.1=py36_0
   - python=3.6.10=hc70fcce_1
   - python-dateutil=2.8.1=py_0
-  - python-libarchive-c=2.9=py_0
   - python_abi=3.6=1_cp36m
-  - pytz=2019.3=py_0
-  - pyyaml=5.3.1=py36h1de35cc_0
   - readline=8.0=h1de35cc_0
   - requests=2.23.0=py36_0
-  - ripgrep=11.0.2=he32d670_0
-  - ruamel_yaml=0.15.87=py36h1de35cc_0
-  - scipy=1.4.1=py36h9fa6033_0
+  - scipy=1.2.1=py36hbd7caa9_1
   - setuptools=46.1.3=py36_0
   - six=1.14.0=py36_0
-  - soupsieve=2.0=py_0
-  - sqlalchemy=1.3.16=py36h1de35cc_0
   - sqlite=3.31.1=h5c1f38d_1
   - tk=8.6.8=ha441bb4_0
   - tornado=6.0.4=py36h37b9a7d_1
-  - tqdm=4.45.0=py_0
   - urllib3=1.25.8=py36_0
   - wcwidth=0.1.9=py_0
-  - werkzeug=1.0.1=pyh9f0ad1d_0
+  - werkzeug=1.0.1=py_0
   - wheel=0.34.2=py36_0
   - xz=5.2.5=h1de35cc_0
-  - yaml=0.1.7=hc338f04_2
   - zipp=2.2.0=py_0
   - zlib=1.2.11=h1de35cc_3
   - zstd=1.3.7=h5bba6e5_0
   - pip:
     - aniso8601==8.0.0
     - flask-restful==0.3.8
+    - pytz==2020.1

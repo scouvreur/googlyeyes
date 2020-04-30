@@ -26,5 +26,5 @@ pytest
 
 * Credits to [pyimagesearch](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/) for the code to find the facial landmarks.
 * Credits to [sagaragarwal94](https://github.com/sagaragarwal94/python_rest_flask) for his simple webserver API using Flask.
-* Credits to [fireant](https://stackoverflow.com/users/1334399/fireant) for his StackOverflow [post](https://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv) on overlaying a PNG image with OpenCv.
-* Credits to the [Helen dataset](http://www.ifp.illinois.edu/~vuongle2/helen/), part of which was used for testing.
+* Credits to [fireant](https://stackoverflow.com/users/1334399/fireant) for his StackOverflow [answer](https://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv) on overlaying a PNG image with OpenCV.
+* Credits to the [Helen dataset](http://www.ifp.illinois.edu/~vuongle2/helen/) which was used for testing.
