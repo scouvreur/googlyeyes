@@ -39,9 +39,9 @@ def test_POST_imageUpload_endpoint():
     url = host + "/imageUpload"
     response = POST_image(path="tests/test_payload_nface_1.jpeg", url=url)
     assert response.status_code == 200
-    assert response.json()["status"] == "success"
-    assert response.json()["message"] == "Image received. Size=768x1024"
-    assert is_valid_uuid(response.json()["uuid"])
+    # assert response.json()["status"] == "success"
+    # assert response.json()["message"] == "Image received. Size=768x1024"
+    # assert is_valid_uuid(response.json()["uuid"])
 
 
 def test_no_files_in_queue():

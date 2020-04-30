@@ -8,7 +8,7 @@ import uuid
 import os
 import logging
 
-from flask import Flask, request
+from flask import Flask, request, send_file
 from flask_restful import Resource, Api
 
 from process_image import process
@@ -26,7 +26,7 @@ class ImageUpload(Resource):
         try:
             os.mkdir("queue/")
         except FileExistsError:
-            pass
+            print("Folder exists")
         # convert string of image data to uint8
         array = np.fromstring(request.data, np.uint8)
         # decode image
@@ -35,18 +35,13 @@ class ImageUpload(Resource):
         cv2.imwrite("queue/" + input_uuid + ".jpg", input_image)
         # Process image
         output_image = process(input_image)
-        cv2.imwrite("queue/" + output_uuid + ".jpg", output_image)
         # Write processed image to disk and send it back in response
-        os.remove("queue/" + input_uuid + ".jpg")
-        os.remove("queue/" + output_uuid + ".jpg")
-        response = {
-            "status": "success",
-            "message": "Image received. Size={}x{}".format(
-                input_image.shape[1], input_image.shape[0]
-            ),
-            "uuid": input_uuid,
-        }
-        return response
+        cv2.imwrite("queue/" + output_uuid + ".jpg", output_image)
+        try:
+            return send_file("../queue/" + output_uuid + ".jpg")
+        finally:
+            os.remove("queue/" + input_uuid + ".jpg")
+            os.remove("queue/" + output_uuid + ".jpg")
 
 
 class Test(Resource):
