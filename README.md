@@ -7,6 +7,10 @@ A lightweight web application which adds googly eyes to an image sent to its POS
 Install in editable mode using pip:
 
 ```bash
+cd googlyeyes/
+conda create -n googlyeyes-env -c conda-forge python=3.6 coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
+
+conda activate googlyeyes-env
 pip install -e .
 ```
 
@@ -18,9 +22,9 @@ From the project root directory you can run the tests with:
 pytest
 ```
 
-## The 
+## Facial coordinate points
 
-68 facial coordinate points from the iBUG 300-W.
+68 facial coordinate points from the iBUG 300-W dataset.
 
 ## Credits
 
