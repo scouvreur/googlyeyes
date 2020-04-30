@@ -12,7 +12,6 @@ entrypoints==0.3
 flake8==3.7.9
 Flask==1.1.2
 Flask-RESTful==0.3.8
--e git+git@github.com:scouvreur/googlyeyes.git@c686bcee270260d80c9f0b811c41990a62a5d01c#egg=googlyeyes
 idna==2.9
 importlib-metadata==1.6.0
 imutils==0.5.3
