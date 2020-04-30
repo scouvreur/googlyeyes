@@ -23,6 +23,10 @@ class ImageUpload(Resource):
         return response
 
     def post(self):
+        try:
+            os.mkdir("queue/")
+        except FileExistsError:
+            pass
         # convert string of image data to uint8
         array = np.fromstring(request.data, np.uint8)
         # decode image

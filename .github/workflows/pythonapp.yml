@@ -35,6 +35,5 @@ jobs:
       - name: Test with pytest
         run: |
           pip install -e .
-          # screen -d -m -S server bash -c "python googlyeyes/server.py"
-          pytest -k test_process_image
-          # pytest
+          screen -d -m -S server bash -c "python googlyeyes/server.py"
+          pytest
