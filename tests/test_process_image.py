@@ -22,7 +22,6 @@ def test_gen_googlyeye():
         filename="tests/googlyeye_250px_rotated_90deg.png", flags=-1
     )  # includes the alpha channel
     googlyeye = gen_googlyeye(size=250, angle=90)
-    # assert is_equal(ground_truth, rotated_eye)
     assert type(googlyeye) is np.ndarray
     assert googlyeye.shape == (250, 250, 4)  # 250x250, RGB+alpha channel
     assert_array_equal(ground_truth, googlyeye)
