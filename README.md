@@ -2,6 +2,10 @@
 
 A lightweight web application which adds googly eyes to an image sent to its POST endpoint.
 
+ `POST` payload                       | Response body
+:------------------------------------:|:-----------------------------------------------:
+ ![](tests/test_payload_nface_1.jpeg) | ![](resources/test_payload_nface_1_output.jpeg)
+
 ## Installation & Usage
 
 Install in editable mode using pip:
