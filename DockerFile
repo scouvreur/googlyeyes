@@ -1,18 +1,23 @@
+FROM ubuntu
 FROM continuumio/miniconda3
 
 WORKDIR /app
 
-# Create the environment:
+# Create the environment
 COPY environment.yml .
-RUN conda env create -f environment.yml
+COPY pytest.ini .
+COPY setup.py .
+COPY README.md .
+COPY googlyeyes/ googlyeyes/
+COPY resources/ resources/
+COPY tests/ tests/
+RUN ls -la .
 
-# Make RUN commands use the new environment:
-SHELL ["conda", "run", "-n", "googlyeyes", "/bin/bash", "-c"]
+# Install dependencies
+RUN conda update -n base -c defaults conda
+RUN conda install -c conda-forge coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
+RUN pip install -e .
 
-# Make sure the environment is activated:
-RUN echo "Make sure flask is installed:"
-RUN python -c "import flask"
-
-# The code to run when container is started:
-COPY server.py .
-ENTRYPOINT ["conda", "run", "-n", "googlyeyes", "python", "server.py"]
+# Run when container is started
+ENTRYPOINT ["python", "googlyeyes/server.py"]
+EXPOSE 5000

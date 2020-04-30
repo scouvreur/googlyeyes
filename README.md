@@ -13,12 +13,18 @@ conda activate googlyeyes-env
 pip install -e .
 ```
 
-## Run unit and regression tests
-
-From the project root directory you can run the tests by first running the application in the background, and then using `pytest`:
+## Building the docker image
 
 ```bash
-screen -d -m -S server bash -c "python googlyeyes/server.py"
+docker build -t googlyeyes-app .
+```
+
+## Run unit and regression tests
+
+You can then run the application using:
+
+```bash
+docker run -d -p 5000:5000 googlyeyes-app
 pytest
 ```
 

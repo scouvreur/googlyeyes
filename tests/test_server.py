@@ -9,7 +9,7 @@ import os
 from tests.helpers import is_valid_uuid
 
 # TO-DO read this from server.py
-host = "http://127.0.0.1:5000"
+host = "http://0.0.0.0:5000"
 
 
 def POST_image(path, url):
