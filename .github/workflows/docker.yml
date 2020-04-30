@@ -1,4 +1,4 @@
-name: Python application
+name: Python application (docker)
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
           # exit-zero treats all errors as warnings
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
       - name: Build docker image
-        run: docker build -t googlyeyes-app .
+        run: docker build -t googlyeyes-app ../
       - name: Test with pytest running web application in background
         run: |
           pip install -e .
