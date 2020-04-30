@@ -190,17 +190,3 @@ def save_lossles_jpeg(path: str, image: np.ndarray) -> None:
             int(cv2.IMWRITE_JPEG_CHROMA_QUALITY), 100,
         ],
     )
-
-# ground_truth = cv2.imread(
-#     filename="tests/test_overlay_image_post.jpg", flags=1
-# )
-# small_image = cv2.imread(
-#     filename="tests/googlyeye_250px_rotated_90deg.png", flags=-1
-# )  # includes the alpha channel
-# large_image = cv2.imread(
-#     filename="tests/test_overlay_image_pre.jpg", flags=1
-# )
-# overlaid_image = overlay_images(
-#     small_image, large_image, offset=(250, 450)
-# )
-# save_lossles_jpeg(path="queue/savedImage22.jpg", image=overlaid_image)
