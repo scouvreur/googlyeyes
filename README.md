@@ -1,6 +1,6 @@
 # googlyeyes
 
-A lightweight web application which adds googly eyes to an image sent to its POST endpoint.
+A lightweight web application which adds googly eyes to an image sent to its `POST /imageUpload` endpoint.
 
  `POST` payload                       | Response body                                | Faces
 :------------------------------------:|:--------------------------------------------:|:------------:
