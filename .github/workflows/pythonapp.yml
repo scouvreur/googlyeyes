@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-    name: ${{ matrix.python-version }} py3.6
+    name: ${{ matrix.os }}-py3.6
     steps:
       - uses: actions/checkout@v2
       - name: Setup conda
@@ -35,4 +35,4 @@ jobs:
       - name: Test with pytest
         run: |
           pip install -e .
-          pytest
+          pytest -k test_process_image
