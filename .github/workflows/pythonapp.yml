@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macOS-latest]
-    name: Python 3.6 example
+    name: ${{ matrix.python-version }} py3.6
     steps:
       - uses: actions/checkout@v2
       - name: Setup conda
@@ -26,7 +26,6 @@ jobs:
       - name: Install dependencies
         run: |
           conda install coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
-          pip install .
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
@@ -35,4 +34,5 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
       - name: Test with pytest
         run: |
+          pip install -e .
           pytest
