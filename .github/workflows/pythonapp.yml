@@ -22,9 +22,9 @@ jobs:
           python-version: 3.6
           conda-channels: anaconda, conda-forge
       - name: Get conda version
-      - run: conda --version
+        run: conda --version
       - name: Install dependencies
-      - run: |
+        run: |
           conda install coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
           pip install .
       - name: Lint with flake8
