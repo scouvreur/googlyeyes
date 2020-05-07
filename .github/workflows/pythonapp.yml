@@ -34,6 +34,7 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=79 --statistics
       - name: Test with pytest running web application in background
         run: |
+          pip install -e .
           screen -d -m -S server bash -c "python googlyeyes/server.py"
           coverage run -m pytest
       - name: Code coverage report

@@ -58,14 +58,14 @@ dependencies:
   - libwebp=1.0.2=hd3bf737_5
   - libxml2=2.9.10=h53d96d6_0
   - llvm-openmp=10.0.0=h28b9765_0
-  - lz4-c=1.9.2=h4a8c4bd_0
+  - lz4-c=1.9.2=h4a8c4bd_1
   - markupsafe=1.1.1=py36h37b9a7d_1
   - matplotlib-base=3.2.1=py36h83d3ec1_0
   - mccabe=0.6.1=py_1
   - more-itertools=8.2.0=py_0
   - ncurses=6.1=h0a44026_1002
   - nettle=3.4.1=h3efe00b_1002
-  - numpy=1.18.1=py36hdc5ca10_1
+  - numpy=1.18.4=py36hdc5ca10_0
   - opencv=4.2.0=py36_6
   - openh264=1.8.0=hd9629dc_1000
   - openssl=1.1.1g=h0b31af3_0
@@ -73,7 +73,7 @@ dependencies:
   - pcre=8.44=h4a8c4bd_0
   - pip=20.1=pyh9f0ad1d_0
   - pixman=0.38.0=h01d97ff_1003
-  - pluggy=0.12.0=py_0
+  - pluggy=0.13.1=py36h9f0ad1d_1
   - py=1.8.1=py_0
   - py-opencv=4.2.0=py36h95af2a2_6
   - pycodestyle=2.5.0=py_0

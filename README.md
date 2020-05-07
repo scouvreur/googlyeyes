@@ -16,7 +16,6 @@ Install in editable mode using pip:
 cd googlyeyes/
 conda create -n googlyeyes-env -c conda-forge python=3.6 coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
 conda activate googlyeyes-env
-pip install -e .
 ```
 
 ## Building the docker image
