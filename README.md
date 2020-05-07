@@ -2,11 +2,11 @@
 
 A lightweight web application which adds googly eyes to an image sent to its `POST /imageUpload` endpoint.
 
- `POST` payload                       | Response body                               | Faces
-:------------------------------------:|:-------------------------------------------:|:-----------:
- ![](tests/test_payload_nface_1.jpeg) | ![](tests/test_payload_nface_1_output.jpeg) | `n_faces=1`
- ![](tests/test_payload_nface_2.jpeg) | ![](tests/test_payload_nface_2_output.jpeg) | `n_faces=2`
- ![](tests/test_payload_nface_3.jpeg) | ![](tests/test_payload_nface_3_output.jpeg) | `n_faces=3`
+ `POST` payload                            | Response body                                    | Faces
+:-----------------------------------------:|:------------------------------------------------:|:-----------:
+ ![](tests/data/test_payload_nface_1.jpeg) | ![](tests/data/test_payload_nface_1_output.jpeg) | `n_faces=1`
+ ![](tests/data/test_payload_nface_2.jpeg) | ![](tests/data/test_payload_nface_2_output.jpeg) | `n_faces=2`
+ ![](tests/data/test_payload_nface_3.jpeg) | ![](tests/data/test_payload_nface_3_output.jpeg) | `n_faces=3`
 
 ## Installation & Usage
 
