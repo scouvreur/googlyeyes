@@ -19,7 +19,7 @@ def test_gen_googlyeye():
     """Test for gen_googlyeye
     """
     ground_truth = cv2.imread(
-        filename="tests/googlyeye_250px_rotated_90deg.png", flags=-1
+        filename="tests/data/googlyeye_250px_rotated_90deg.png", flags=-1
     )  # includes the alpha channel
     googlyeye = gen_googlyeye(size=250, angle=90)
     assert type(googlyeye) is np.ndarray
@@ -30,7 +30,7 @@ def test_gen_googlyeye():
 def test_get_faces():
     """Test for get_faces
     """
-    input_image = cv2.imread("tests/test_payload_nface_2.jpeg")
+    input_image = cv2.imread("tests/data/test_payload_nface_2.jpeg")
     ground_truth = rectangles()
     ground_truth.append(rectangle(290, 290, 675, 675))
     ground_truth.append(rectangle(92, 588, 315, 811))
@@ -40,7 +40,7 @@ def test_get_faces():
 def test_get_facial_landmarks():
     """Test for get_facial_landmarks
     """
-    input_image = cv2.imread("tests/test_payload_nface_1.jpeg")
+    input_image = cv2.imread("tests/data/test_payload_nface_1.jpeg")
     face = get_faces(input_image)[0]
     shape = get_facial_landmarks(input_image, face)
     ground_truth = np.array([
@@ -67,13 +67,13 @@ def test_overlay_images():
     """Test for overlay_images
     """
     ground_truth = cv2.imread(
-        filename="tests/test_overlay_image_post.jpg", flags=1
+        filename="tests/data/test_overlay_image_post.jpg", flags=1
     )
     small_image = cv2.imread(
-        filename="tests/googlyeye_250px_rotated_90deg.png", flags=-1
+        filename="tests/data/googlyeye_250px_rotated_90deg.png", flags=-1
     )  # includes the alpha channel
     large_image = cv2.imread(
-        filename="tests/test_overlay_image_pre.jpg", flags=1
+        filename="tests/data/test_overlay_image_pre.jpg", flags=1
     )
     overlaid_image = overlay_images(
         small_image, large_image, offset=(250, 450)

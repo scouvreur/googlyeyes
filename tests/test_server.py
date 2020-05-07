@@ -29,7 +29,7 @@ def test_POST_imageUpload_endpoint():
     """Test for POST to /imageUpload endpoint
     """
     url = host + "/imageUpload"
-    response = POST_image(path="tests/test_payload_nface_1.jpeg", url=url)
+    response = POST_image(path="tests/data/test_payload_nface_1.jpeg", url=url)
     output_image = buffer_to_image(response.content)
     filename = response.headers["Content-Disposition"].split('=')[1]
     uuid = filename.split('.')[0]
