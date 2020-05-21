@@ -10,7 +10,7 @@ COPY resources/ resources/
 
 # Install dependencies
 RUN conda update -n base -c defaults conda
-RUN conda install -c conda-forge coverage flake8 Flask Flask-RESTful imutils dlib opencv numpy pytest requests
+RUN conda install -c conda-forge requests Flask Flask-RESTful imutils dlib opencv numpy
 RUN pip install -e .
 
 # Run when container is started
