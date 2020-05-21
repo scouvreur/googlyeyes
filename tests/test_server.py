@@ -3,7 +3,6 @@ Test for web application REST API server module.
 """
 
 import requests
-import os
 import numpy as np
 
 from googlyeyes.helper_functions import (
@@ -54,21 +53,14 @@ def test_server_performance_syncronous():
     mean_response_time_ms = np.mean(response_times_array_ms)
     three_9s_response_time_ms = np.percentile(response_times_array_ms, 99.9)
     five_9s_response_time_ms = np.percentile(response_times_array_ms, 99.999)
-    assert mean_response_time_ms < 300.0
-    assert three_9s_response_time_ms < 400.0
-    assert five_9s_response_time_ms < 500.0
+    assert mean_response_time_ms < 500.0
+    assert three_9s_response_time_ms < 750.0
+    assert five_9s_response_time_ms < 1000.0
     return {
         "mean_response_time_ms": mean_response_time_ms,
         "three_9s_response_time_ms": three_9s_response_time_ms,
         "five_9s_response_time_ms": five_9s_response_time_ms,
     }
-
-
-def test_no_files_in_queue():
-    """Test that after POST to /imageUpload endpoint, both input and output
-    files are deleted from the queue folder
-    """
-    assert os.listdir("queue/") == []
 
 
 def test_POST_test_endpoint():

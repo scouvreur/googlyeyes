@@ -11,6 +11,7 @@ from googlyeyes.server import host, port
 from googlyeyes.helper_functions import (
     is_valid_uuid,
     buffer_to_image,
+    image_to_buffer,
     POST_image,
 )
 
@@ -43,6 +44,15 @@ def test_buffer_to_image():
     output = buffer_to_image(input_bytes=img_bytes)
     assert_array_equal(output, ground_truth)
     assert ground_truth.shape == output.shape
+
+
+def test_image_to_buffer():
+    """Test for image_to_buffer function
+    """
+    img = cv2.imread("tests/data/test_buffer.jpg")
+    # encode image as jpeg
+    _, img_encoded = cv2.imencode(".jpg", img)
+    assert img_encoded.tostring() == image_to_buffer(input_image=img)
 
 
 def test_POST_image():

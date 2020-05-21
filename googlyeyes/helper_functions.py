@@ -45,9 +45,27 @@ def buffer_to_image(input_bytes: bytes) -> np.ndarray:
     output_image : np.ndarray
         Output image.
     """
-    array = np.frombuffer(input_bytes, dtype='uint8')
+    array = np.frombuffer(input_bytes, dtype="uint8")
     output_image = cv2.imdecode(array, cv2.IMREAD_COLOR)
     return output_image
+
+
+def image_to_buffer(input_image: np.ndarray) -> bytes:
+    """
+    Convert an input image into an output buffer.
+
+    Parameters
+    ----------
+    input_image : np.ndarray
+        Input image.
+
+    Returns
+    -------
+    output_bytes: bytes
+        Output bytes buffer.
+    """
+    _, img_encoded = cv2.imencode(".jpg", input_image)
+    return img_encoded.tostring()
 
 
 def POST_image(path, url) -> requests.models.Response:

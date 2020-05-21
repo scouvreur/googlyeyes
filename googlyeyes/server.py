@@ -2,16 +2,15 @@
 Web application REST API server module.
 """
 
-import cv2
 import uuid
-import os
 import logging
 
-from flask import Flask, request, send_file
+from flask import Flask, Response, request
 from flask_restful import Resource, Api
+from werkzeug.datastructures import Headers
 
 from googlyeyes.process_image import process
-from googlyeyes.helper_functions import buffer_to_image
+from googlyeyes.helper_functions import buffer_to_image, image_to_buffer
 
 app = Flask(__name__)
 api = Api(app)
@@ -23,22 +22,24 @@ class ImageUpload(Resource):
         return response
 
     def post(self):
-        try:
-            os.mkdir("queue/")
-        except FileExistsError:
-            pass
-        # decode image
+        # Decode image
         input_image = buffer_to_image(request.data)
         output_uuid = str(uuid.uuid4())
         # Process image
         output_image = process(input_image)
-        # Write processed image to disk and send it back in response
-        cv2.imwrite("queue/" + output_uuid + ".jpg", output_image)
-        try:
-            return send_file("../queue/" + output_uuid + ".jpg",
-                             as_attachment=True)
-        finally:
-            os.remove("queue/" + output_uuid + ".jpg")
+        # Create response headers
+        header = Headers()
+        header.add("Content-Type", "image/jpeg")
+        header.add(
+            "Content-Disposition",
+            "attachment",
+            filename=output_uuid + ".jpg"
+        )
+        return Response(
+            response=image_to_buffer(output_image),
+            status=200,
+            headers=header
+        )
 
 
 class Test(Resource):
