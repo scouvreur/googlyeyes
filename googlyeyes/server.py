@@ -29,8 +29,7 @@ class ImageUpload(Resource):
             pass
         # decode image
         input_image = buffer_to_image(request.data)
-        input_uuid, output_uuid = str(uuid.uuid4()), str(uuid.uuid4())
-        cv2.imwrite("queue/" + input_uuid + ".jpg", input_image)
+        output_uuid = str(uuid.uuid4())
         # Process image
         output_image = process(input_image)
         # Write processed image to disk and send it back in response
@@ -39,7 +38,6 @@ class ImageUpload(Resource):
             return send_file("../queue/" + output_uuid + ".jpg",
                              as_attachment=True)
         finally:
-            os.remove("queue/" + input_uuid + ".jpg")
             os.remove("queue/" + output_uuid + ".jpg")
 
 
