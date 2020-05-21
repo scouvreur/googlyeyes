@@ -4,6 +4,7 @@ Test for web application REST API server module.
 
 import requests
 import os
+import numpy as np
 
 from googlyeyes.helper_functions import (
     is_valid_uuid,
@@ -39,8 +40,28 @@ def test_POST_imageUpload_endpoint():
     assert response.status_code == 200
     assert response.headers["Content-Type"] == "image/jpeg"
     assert output_image.shape == (1024, 768, 3)
-    assert response.elapsed.total_seconds() < 5
     assert is_valid_uuid(uuid)
+    return response.elapsed.total_seconds()
+
+
+def test_server_performance_syncronous():
+    """Test for POST to /imageUpload endpoint
+    """
+    response_times = []
+    for _ in range(100):
+        response_times.append(test_POST_imageUpload_endpoint())
+    response_times_array_ms = np.array(response_times, dtype=np.float64)*1000
+    mean_response_time_ms = np.mean(response_times_array_ms)
+    three_9s_response_time_ms = np.percentile(response_times_array_ms, 99.9)
+    five_9s_response_time_ms = np.percentile(response_times_array_ms, 99.999)
+    assert mean_response_time_ms < 300.0
+    assert three_9s_response_time_ms < 400.0
+    assert five_9s_response_time_ms < 500.0
+    return {
+        "mean_response_time_ms": mean_response_time_ms,
+        "three_9s_response_time_ms": three_9s_response_time_ms,
+        "five_9s_response_time_ms": five_9s_response_time_ms,
+    }
 
 
 def test_no_files_in_queue():
