@@ -33,6 +33,36 @@ docker run -d -p 5000:5000 googlyeyes-app
 pytest
 ```
 
+## Code coverage
+
+```bash
+Name                             Stmts   Miss  Cover   Missing
+--------------------------------------------------------------
+googlyeyes/helper_functions.py      23      0   100%
+googlyeyes/process_image.py         48     14    71%   149-178, 182
+googlyeyes/server.py                34     15    56%   21-22, 26-38, 47-53, 64-65
+tests/test_helper_functions.py      36      0   100%
+tests/test_process_image.py         30      0   100%
+tests/test_server.py                47      0   100%
+--------------------------------------------------------------
+TOTAL                              218     29    87%
+```
+
+## Performance testing
+### Synchronous performance tests
+
+Performance tests were made by making 1000 sequential requests to a single docker image running the application:
+
+ Statistic                  | Response time (ms)
+----------------------------|--------------------
+ Mean                       | 354.90
+ 99.9%                      | 829.52
+ 99.999%                    | 845.59
+
+### Asynchronous performance tests
+
+To-do for v0.4.
+
 ## Facial coordinate points
 
 68 facial coordinate points from the iBUG 300-W dataset.

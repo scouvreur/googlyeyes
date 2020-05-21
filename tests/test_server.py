@@ -47,7 +47,7 @@ def test_server_performance_syncronous():
     """Test for POST to /imageUpload endpoint
     """
     response_times = []
-    for _ in range(100):
+    for _ in range(20):
         response_times.append(test_POST_imageUpload_endpoint())
     response_times_array_ms = np.array(response_times, dtype=np.float64)*1000
     mean_response_time_ms = np.mean(response_times_array_ms)
