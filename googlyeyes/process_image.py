@@ -8,6 +8,15 @@ import dlib
 import cv2
 import random
 
+# Instantiate detectors only once
+# Initialize facial landmark predictor
+predictor = dlib.shape_predictor(
+    "resources/shape_predictor_68_face_landmarks.dat"
+)
+
+# Initialize dlib's face detector (HOG-based)
+detector = dlib.get_frontal_face_detector()
+
 
 def gen_googlyeye(size: int, angle: int) -> np.ndarray:
     """
@@ -50,9 +59,6 @@ def get_faces(input_image: np.ndarray) -> dlib.rectangles:
     faces : dlib.rectangles
         List of arrays of face bounding boxes coordinates.
     """
-    # initialize dlib's face detector (HOG-based)
-    detector = dlib.get_frontal_face_detector()
-
     # load input image, resize it, and convert it to grayscale
     # input_image = imutils.resize(input_image, width=500)
     grayscale = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
@@ -82,11 +88,6 @@ def get_facial_landmarks(
         Array of [x, y] coordinates in pixels of the 68
         facial landmarks.
     """
-    # initialize facial landmark predictor
-    predictor = dlib.shape_predictor(
-        "resources/shape_predictor_68_face_landmarks.dat"
-    )
-
     grayscale = cv2.cvtColor(input_image, cv2.COLOR_BGR2GRAY)
     shape = predictor(grayscale, face)
     shape = face_utils.shape_to_np(shape)
